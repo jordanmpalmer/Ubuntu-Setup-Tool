@@ -3,6 +3,8 @@
 
 export PATH="$PATH:/home/jmpalmer/worldbanc/private/bin"
 
+export TERM="xterm-256color"
+
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -119,6 +121,8 @@ alias ls='lsd'
 alias ll='ls -FlAh'
 alias llt='ls -FlAh --tree'
 alias lt='ls --tree'
+
+setopt extendedglob # for more advanced pattern matching in bash
 
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
