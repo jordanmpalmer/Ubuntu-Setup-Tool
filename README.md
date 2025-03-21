@@ -1,6 +1,15 @@
-## README
+# README
 
-Install to setup zsh
+## Automated Installation
+
+```sh
+# Run installation script
+./install.sh
+```
+
+## Manual Installation
+
+#### Zsh setup
 ```sh
 # Install zsh and set as default
 sudo apt update
@@ -18,7 +27,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 ```
 Then move .zshrc to home directory and source it with `source ~/.zshrc`
 
-For tmux plugins
+#### Tmux setup
 ```sh
 # Install tmux
 sudo apt install -y tmux
