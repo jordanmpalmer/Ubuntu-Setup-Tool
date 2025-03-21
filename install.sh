@@ -8,10 +8,11 @@ sudo apt update
 echo "Installing zsh..."
 sudo apt install -y zsh
 chsh -s $(which zsh)
+sudo apt install -y lsd
 
 # Install ohmyzsh
 echo "Installing Oh My Zsh..."
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Move .zshrc to home directory
 mv ~/.zshrc ~/.zshrc.bak
