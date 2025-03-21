@@ -39,6 +39,14 @@ cp .tmux.conf ~
 # Source tmux configuration
 tmux source-file ~/.tmux.conf
 
+# Install Rust and Cargo
+echo "Installing Rust and Cargo..."
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# Configure the current shell to use Cargo
+echo "Configuring shell for Cargo..."
+source $HOME/.cargo/env
+
 # Verify installations
 echo "Verifying installations..."
 if command -v zsh &> /dev/null; then 
@@ -63,6 +71,12 @@ if [ -d "$HOME/.tmux/plugins/tpm" ]; then
     echo "TPM installed successfully."
 else
     echo "TPM installation failed."
+fi
+
+if command -v stylua &> /dev/null; then
+    echo "stylua installed successfully: $(stylua --version)"
+else
+    echo "stylua installation failed."
 fi
 
 echo "Installation script completed, run <leader>+I in tmux to install plugins"
