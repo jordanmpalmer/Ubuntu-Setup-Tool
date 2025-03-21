@@ -3,8 +3,10 @@
 Install to setup zsh
 ```sh
 # Install zsh and set as default
+sudo apt update
 sudo apt install zsh
 chsh -s $(which zsh)
+sudo apt install lsd
 
 # Install ohmyzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -16,6 +18,9 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 
 For tmux plugins
 ```sh
+# Install tmux
+sduo apt install tmux
+
 # Install tmux package manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
