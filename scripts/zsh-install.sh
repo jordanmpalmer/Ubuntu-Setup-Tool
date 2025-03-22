@@ -8,7 +8,7 @@ sudo apt update
 echo "Installing zsh..."
 sudo apt install -y zsh
 chsh -s $(which zsh)
-sudo apt install -y lsd
+sudo apt install -y lsd unzip
 
 # Install ohmyzsh
 echo "Installing Oh My Zsh..."
