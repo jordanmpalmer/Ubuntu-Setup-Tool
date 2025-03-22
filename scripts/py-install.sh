@@ -16,7 +16,7 @@ else
     
 fi
 
-mkdir ~/.config
+mkdir -p ~/.config
 
 
 echo "Python installation script completed"

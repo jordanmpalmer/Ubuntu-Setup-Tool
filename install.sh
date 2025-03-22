@@ -45,4 +45,9 @@ if prompt_install "Would you like to install Neovim?"; then
     ./scripts/nvim-install.sh
 fi
 
+# Prompt for Neovim settings
+if prompt_install "Would you like to install Jordan's Neovim setup?"; then
+    ./scripts/nvim-setup.sh
+fi
+
 echo "Installation script completed."
