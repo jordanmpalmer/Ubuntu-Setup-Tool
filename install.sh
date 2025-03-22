@@ -10,44 +10,57 @@ prompt_install() {
     esac
 }
 
-# Prompt for Zsh installation
-if prompt_install "Would you like to install Zsh?"; then
-    ./scripts/zsh-install.sh
-fi
+if prompt_install "Would you like to do a full install?"; then
+   ./scripts/zsh-install.sh
+   ./scripts/tmux-install.sh
+   ./scripts/go-install.sh
+   ./scripts/py-install.sh
+   ./scripts/js-install.sh
+   ./scripts/rust-install.sh
+   ./scripts/nvim-install.sh
+   ./scripts/nvim-setup.sh
+else
+   # Prompt for Zsh installation
+   if prompt_install "Would you like to install Zsh?"; then
+      ./scripts/zsh-install.sh
+   fi
 
-# Prompt for Tmux installation
-if prompt_install "Would you like to install Tmux?"; then
-    ./scripts/tmux-install.sh
-fi
+   # Prompt for Tmux installation
+   if prompt_install "Would you like to install Tmux?"; then
+      ./scripts/tmux-install.sh
+   fi
 
-# Prompt for Go installation
-if prompt_install "Would you like to install Go?"; then
-    ./scripts/go-install.sh
-fi
+   # Prompt for Go installation
+   if prompt_install "Would you like to install Go?"; then
+      ./scripts/go-install.sh
+   fi
 
-# Prompt for Python installation
-if prompt_install "Would you like to install Python?"; then
-    ./scripts/py-install.sh
-fi
+   # Prompt for Python installation
+   if prompt_install "Would you like to install Python?"; then
+      ./scripts/py-install.sh
+   fi
 
-# Prompt for JavaScript installation
-if prompt_install "Would you like to install JavaScript tools?"; then
-    ./scripts/js-install.sh
-fi
+   # Prompt for JavaScript installation
+   if prompt_install "Would you like to install JavaScript tools?"; then
+      ./scripts/js-install.sh
+   fi
 
-# Prompt for Rust installation
-if prompt_install "Would you like to install Rust?"; then
-    ./scripts/rust-install.sh
-fi
+   # Prompt for Rust installation
+   if prompt_install "Would you like to install Rust?"; then
+      ./scripts/rust-install.sh
+   fi
 
-# Prompt for Neovim installation
-if prompt_install "Would you like to install Neovim?"; then
-    ./scripts/nvim-install.sh
-fi
+   # Prompt for Neovim installation
+   if prompt_install "Would you like to install Neovim?"; then
+      ./scripts/nvim-install.sh
+   fi
 
-# Prompt for Neovim settings
-if prompt_install "Would you like to install Jordan's Neovim setup?"; then
-    ./scripts/nvim-setup.sh
+   # Prompt for Neovim settings
+   if prompt_install "Would you like to install Jordan's Neovim setup?"; then
+      ./scripts/nvim-setup.sh
+   fi
+
 fi
 
 echo "Installation script completed."
+
