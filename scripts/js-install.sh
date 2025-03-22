@@ -1,18 +1,12 @@
 #!/bin/bash
 
-# Check if Node.js is installed
-if command -v node &> /dev/null; then
-    echo "Node.js is already installed: $(node -v)"
-else
-    echo "Node.js is not installed. Proceeding with installation..."
 
-    # Install Node.js and npm
-    if sudo apt install -y nodejs npm; then
-        echo "Node.js and npm installed successfully."
-    else
-        echo "Failed to install Node.js and npm. Exiting."
-        exit 1
-    fi
+# Install Node.js and npm
+if sudo apt install -y nodejs npm; then
+    echo "Node.js and npm installed successfully."
+else
+    echo "Failed to install Node.js and npm. Exiting."
+    exit 1
 fi
 
 # Check if NVM is installed
@@ -56,5 +50,6 @@ else
    echo "NVM configuration is already present in .zshrc."
 fi
 
+source ~/.zshrc
 
 echo "JavaScript and Node installation script completed"

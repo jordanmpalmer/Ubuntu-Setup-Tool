@@ -31,4 +31,8 @@ else
   echo "Go is already in PATH in .zshrc."
 fi
 
+rm go1.24.1.linux-amd64.tar.gz
+
+source ~/.zshrc
+
 echo "Go installation script completed"

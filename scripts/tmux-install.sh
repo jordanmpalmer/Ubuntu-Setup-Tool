@@ -1,28 +1,21 @@
 #!/bin/bash
 
-# Check if tmux is installed
-if command -v tmux &> /dev/null; then
-    echo "tmux is already installed: $(tmux -V)"
+# Update the package list
+echo "Updating package list..."
+if sudo apt update; then
+    echo "Package list updated successfully."
 else
-    echo "tmux is not installed. Proceeding with installation..."
+    echo "Failed to update package list. Exiting."
+    exit 1
+fi
 
-    # Update the package list
-    echo "Updating package list..."
-    if sudo apt update; then
-        echo "Package list updated successfully."
-    else
-        echo "Failed to update package list. Exiting."
-        exit 1
-    fi
-
-    # Install tmux
-    echo "Installing tmux..."
-    if sudo apt install -y tmux; then
-        echo "tmux installed successfully."
-    else
-        echo "Failed to install tmux. Exiting."
-        exit 1
-    fi
+# Install tmux
+echo "Installing tmux..."
+if sudo apt install -y tmux; then
+    echo "tmux installed successfully."
+else
+    echo "Failed to install tmux. Exiting."
+    exit 1
 fi
 
 # Check if TPM (tmux plugin manager) is installed

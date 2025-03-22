@@ -35,8 +35,6 @@ else
     exit 1
 fi
 
-
-
 # Automatically add Cargo to PATH in .zshrc if not already present
 if ! grep -q 'export PATH=\$HOME/.cargo/bin' ~/.zshrc; then
     echo '' >> ~/.zshrc
@@ -48,11 +46,6 @@ else
     echo "Cargo is already in PATH in .zshrc."
 fi
 
-# Verify installations
-if command -v stylua &> /dev/null; then
-    echo "stylua installed successfully: $(stylua --version)"
-else
-    echo "stylua installation failed."
-fi
+source ~/.zshrc
 
 echo "Rust installation script completed"
