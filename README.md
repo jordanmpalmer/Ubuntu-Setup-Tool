@@ -23,6 +23,7 @@ if installing zsh, restart terminal or run 'zsh' post installation
 - Individual packages, prompting install for each
 
 ### Packages
+```
 - Zsh (with or without Oh My Zsh)
 - Tmux with TPM
 - Go
@@ -32,3 +33,4 @@ if installing zsh, restart terminal or run 'zsh' post installation
 - Neovim (built from source)
 - LazyVim
 - JordanVim
+```
