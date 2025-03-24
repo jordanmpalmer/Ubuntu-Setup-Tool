@@ -5,19 +5,22 @@ echo "Updating package list..."
 sudo apt update
 
 # Install zsh
-echo "Installing zsh..."
-sudo apt install -y zsh
+echo "Installing zsh, lsd, and unzip..."
+sudo apt install -y zsh lsd unzip
+
+# Change the default shell to zsh
 chsh -s $(which zsh)
-sudo apt install -y lsd unzip
 
 # Initialize INSTALL_OH_MY_ZSH
 INSTALL_OH_MY_ZSH=""
+DEFAULT_THEME="false"
 
 # Check for the -y flag
 while getopts "y" opt; do
     case $opt in
         y)
             INSTALL_OH_MY_ZSH="y"
+            DEFAULT_THEME="true"
             ;;
         *)
             echo "Usage: $0 [-y]"
@@ -39,8 +42,10 @@ if [[ "$INSTALL_OH_MY_ZSH" =~ ^[Yy]$ ]]; then
     echo "Installing Oh My Zsh..."
     yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-    # Move .zshrc to home directory
-    mv ~/.zshrc ~/.zshrc.bak
+    # Backup existing .zshrc and copy the new one
+    if [ -f ~/.zshrc ]; then
+        mv ~/.zshrc ~/.zshrc.bak
+    fi
     cp .zshrc ~
 
     # Add Oh My Zsh plugins
@@ -53,6 +58,20 @@ if [[ "$INSTALL_OH_MY_ZSH" =~ ^[Yy]$ ]]; then
        echo "Oh My Zsh installed successfully."
     else
        echo "Oh My Zsh installation failed."
+    fi
+
+    if [[ "$DEFAULT_THEME" == "false" ]]; then
+        # Prompt for ZSH theme input
+        read -p "Enter your desired Zsh theme (default: agnoster): " USER_THEME
+
+        # Check if the user provided a theme
+        if [ -n "$USER_THEME" ]; then
+           # Update the .zshrc file with the new theme
+           sed -i.bak "s/^ZSH_THEME=\".*\"/ZSH_THEME=\"$USER_THEME\"/" ~/.zshrc
+           echo "ZSH theme has been set to '$USER_THEME'."
+        else
+           echo "Using agnoster as Zsh theme"
+        fi
     fi
 else
     echo "Skipping Oh My Zsh installation."
