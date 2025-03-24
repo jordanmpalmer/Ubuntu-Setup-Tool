@@ -3,41 +3,21 @@
 ## Automated Installation
 
 ```sh
-# Run installation script
+# Run installation script and follow prompts
 ./install.sh
 ```
 
-## Manual Installation
+if installing tmux, use `<leader>+I` to install tmux plugins.
 
-#### Zsh setup
-```sh
-# Install zsh and set as default
-sudo apt update
-sudo apt install zsh
-chsh -s $(which zsh)
+if installing zsh, restart terminal or run 'zsh' post installation
 
-sudo apt install lsd
-
-# Install ohmyzsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# Add ohmyzsh plugins
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-```
-Then move .zshrc to home directory and source it with `source ~/.zshrc`
-
-#### Tmux setup
-```sh
-# Install tmux
-sudo apt install -y tmux
-
-# Install tmux package manager
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-chmod +x ~/.tmux/plugins/tpm/tpm
-
-tmux source-file ~/.tmux.conf
-```
-
-Use `<leader>+I` to install tmux plugins.
+### Install Options
+- Full install with LazyVim
+- Full install with JordanVim
+    - Zsh (with or without Oh My Zsh)
+    - Tmux with TPM
+    - Go
+    - JavaScript with Node/NPM/NVM
+    - Python
+    - Rust with Cargo (and stylua)
+    - Neovim (built from source)

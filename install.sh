@@ -10,7 +10,10 @@ prompt_install() {
     esac
 }
 
-if prompt_install "Would you like to do a full install?"; then
+zsh_installed="false"
+tmux_installed="false"
+
+if prompt_install "Would you like to do a full install (lazyvim)?"; then
    ./scripts/zsh-install.sh
    ./scripts/tmux-install.sh
    ./scripts/go-install.sh
@@ -18,16 +21,31 @@ if prompt_install "Would you like to do a full install?"; then
    ./scripts/js-install.sh
    ./scripts/rust-install.sh
    ./scripts/nvim-install.sh
-   ./scripts/nvim-setup.sh
+   ./scripts/setup-lazyvim.sh
+   zsh_installed="true"
+   tmux_installed="true"
+elif prompt_install "Would you like to do a full install (jordanvim)?"; then
+   ./scripts/zsh-install.sh
+   ./scripts/tmux-install.sh
+   ./scripts/go-install.sh
+   ./scripts/py-install.sh
+   ./scripts/js-install.sh
+   ./scripts/rust-install.sh
+   ./scripts/nvim-install.sh
+   ./scripts/setup-jordanvim.sh
+   zsh_installed="true"
+   tmux_installed="true"
 else
    # Prompt for Zsh installation
    if prompt_install "Would you like to install Zsh?"; then
       ./scripts/zsh-install.sh
+      zsh_installed="true"
    fi
 
    # Prompt for Tmux installation
    if prompt_install "Would you like to install Tmux?"; then
       ./scripts/tmux-install.sh
+      tmux_installed="true"
    fi
 
    # Prompt for Go installation
@@ -56,11 +74,22 @@ else
    fi
 
    # Prompt for Neovim settings
+   if prompt_install "Would you like to install LazyVim?"; then
+      ./scripts/setup-lazyvim.sh
+   fi
+
+   # Prompt for Neovim settings
    if prompt_install "Would you like to install Jordan's Neovim setup?"; then
-      ./scripts/nvim-setup.sh
+      ./scripts/setup-jordanvim.sh
    fi
 
 fi
 
+echo ""
 echo "Installation script completed."
-
+if [ "$tmux_installed" == "true" ]; then
+   echo "Tmux installed, run <leader>+I in tmux to install plugins"
+fi
+if [ "$zsh_installed" == "true" ]; then
+   echo "Restart your terminal or run 'zsh' to start using Zsh."
+fi

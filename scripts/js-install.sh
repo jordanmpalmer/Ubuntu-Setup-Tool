@@ -9,6 +9,18 @@ else
     exit 1
 fi
 
+# Add npm global package configuration to .zshrc if not already present
+if ! grep -q 'NPM_PACKAGES="${HOME}/.npm-packages"' ~/.zshrc; then
+   echo '' >> ~/.zshrc
+   echo '# NPM settings' >> ~/.zshrc
+   echo 'NPM_PACKAGES="${HOME}/.npm-packages"' >> ~/.zshrc
+   echo 'export PATH="$PATH:$NPM_PACKAGES/bin"' >> ~/.zshrc
+   echo 'export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"' >> ~/.zshrc
+   echo "Added npm global package configuration to .zshrc."
+else
+   echo "npm global package configuration is already present in .zshrc."
+fi
+
 # Check if NVM is installed
 if command -v nvm &> /dev/null; then
     echo "NVM is already installed: $(nvm --version)"
@@ -26,28 +38,6 @@ else
     # Load NVM into the current shell session
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-fi
-
-# Add npm global package configuration to .zshrc if not already present
-if ! grep -q 'NPM_PACKAGES="${HOME}/.npm-packages"' ~/.zshrc; then
-   echo '' >> ~/.zshrc
-   echo 'NPM_PACKAGES="${HOME}/.npm-packages"' >> ~/.zshrc
-   echo 'export PATH="$PATH:$NPM_PACKAGES/bin"' >> ~/.zshrc
-   echo 'export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"' >> ~/.zshrc
-   echo "Added npm global package configuration to .zshrc."
-else
-   echo "npm global package configuration is already present in .zshrc."
-fi
-
-# Automatically add NVM to .zshrc if not already present
-if ! grep -q 'export NVM_DIR="\$HOME/.nvm"' ~/.zshrc; then
-   echo '' >> ~/.zshrc
-   echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.zshrc
-   echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm' >> ~/.zshrc
-   echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion' >> ~/.zshrc
-   echo "Added NVM configuration to .zshrc."
-else
-   echo "NVM configuration is already present in .zshrc."
 fi
 
 source ~/.zshrc

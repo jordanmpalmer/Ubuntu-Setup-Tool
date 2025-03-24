@@ -65,5 +65,3 @@ if [ -d "$HOME/.tmux/plugins/tpm" ]; then
 else
     echo "TPM installation failed."
 fi
-
-echo "Tmux installation script completed, run <leader>+I in tmux to install plugins"

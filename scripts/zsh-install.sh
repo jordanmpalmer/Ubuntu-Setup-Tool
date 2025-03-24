@@ -45,8 +45,4 @@ else
     echo "zsh installation failed."
 fi
 
-
 echo "Zsh installation script completed"
-
-# Start a new Zsh session
-exec zsh

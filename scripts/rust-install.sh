@@ -36,8 +36,9 @@ else
 fi
 
 # Automatically add Cargo to PATH in .zshrc if not already present
-if ! grep -q 'export PATH=\$HOME/.cargo/bin' ~/.zshrc; then
+if ! grep -q 'export PATH="$HOME/.cargo/bin:$PATH"' ~/.zshrc; then
     echo '' >> ~/.zshrc
+    echo '# Rust settings' >> ~/.zshrc
     echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.zshrc
     echo '. "$HOME/.cargo/env"' >> ~/.zshrc
     echo 'source $HOME/.cargo/env' >> ~/.zshrc

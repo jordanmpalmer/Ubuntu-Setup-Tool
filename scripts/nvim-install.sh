@@ -15,7 +15,7 @@ git fetch --tags
 default_version="stable"
 
 # Prompt user for the version of Neovim to install
-read -p "Enter the version of Neovim to install (e.g., stable) [default: $default_version]: " version
+read -p "Enter the version of Neovim to install (e.g., v0.10.4) [default: $default_version]: " version
 
 # Use the default version if no input is provided
 version=${version:-$default_version}

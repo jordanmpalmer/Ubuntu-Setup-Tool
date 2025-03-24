@@ -49,5 +49,3 @@ alias llt='ls -FlAh --tree'
 alias lt='ls --tree'
 
 setopt extendedglob # for more advanced pattern matching in bash
-
-export TERM="xterm-256color"
