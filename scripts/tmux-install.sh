@@ -43,7 +43,7 @@ if [ -f ~/.tmux.conf ]; then
 fi
 
 # Copy the new .tmux.conf from the current directory
-if cp .tmux.conf ~; then
+if cp configs/.tmux.conf ~; then
     echo ".tmux.conf copied to home directory."
 else
     echo "Failed to copy .tmux.conf. Exiting."

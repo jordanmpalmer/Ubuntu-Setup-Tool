@@ -46,7 +46,9 @@ if [[ "$INSTALL_OH_MY_ZSH" =~ ^[Yy]$ ]]; then
     if [ -f ~/.zshrc ]; then
         mv ~/.zshrc ~/.zshrc.bak
     fi
-    cp .zshrc ~
+
+    echo "Copying new .zshrc from configs directory"
+    cp configs/.zshrc ~ || { echo "Failed to copy .zshrc. Exiting."; exit 1; }
 
     # Add Oh My Zsh plugins
     echo "Adding Oh My Zsh plugins..."
