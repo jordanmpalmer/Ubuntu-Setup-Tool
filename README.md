@@ -1,10 +1,10 @@
-# Linux Setup Tool
+# Ubuntu Setup Tool
 
-The **Linux Setup Tool (LST)** is designed to facilitate the simple and efficient setup of Linux Ubuntu environments. This tool provides options for installing some of the most commonly used packages in the Linux ecosystem.
+The **Ubuntu Setup Tool (UST)** is designed to facilitate the simple and efficient setup of Linux Ubuntu environments. This tool provides options for installing some of the most commonly used packages in the Linux ecosystem.
 
 ## Package Requirements
 
-The Linux Setup Tool is specifically designed to work within the Ubuntu operating system. It has been tested and verified with **Ubuntu 24.04.01 LTS**.
+The Ubuntu Setup Tool is specifically designed to work within the Ubuntu operating system. It has been tested and verified with **Ubuntu 24.04.01 LTS**.
 
 ## Automated Installation
 
@@ -20,7 +20,7 @@ To install the necessary packages, simply run the installation script and follow
 - **For Zsh**: Restart your terminal or run `zsh` to activate the new shell after installation.
 
 ## Install Options
-The Linux Setup Tool offers several installation options:
+The Ubuntu Setup Tool offers several installation options:
 
 - **Full installation** of packages with **[LazyVim](https://github.com/LazyVim/LazyVim)**
 - **Full installation** of packages with **[JordanVim](https://github.com/jordanmpalmer/JordanVim)**
@@ -28,7 +28,7 @@ The Linux Setup Tool offers several installation options:
 
 ### Available Packages
 
-The following packages can be installed using the Linux Setup Tool:
+The following packages can be installed using the Ubuntu Setup Tool:
 
 - **Zsh** (with or without [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh))
 - **[Tmux](https://github.com/tmux/tmux)** (with Tmux Plugin Manager)
