@@ -10,8 +10,29 @@ sudo apt install -y zsh
 chsh -s $(which zsh)
 sudo apt install -y lsd unzip
 
-# Prompt for Oh My Zsh installation
-read -p "Would you like to install Oh My Zsh? [Y or N]: " INSTALL_OH_MY_ZSH
+# Initialize INSTALL_OH_MY_ZSH
+INSTALL_OH_MY_ZSH=""
+
+# Check for the -y flag
+while getopts "y" opt; do
+    case $opt in
+        y)
+            INSTALL_OH_MY_ZSH="y"
+            ;;
+        *)
+            echo "Usage: $0 [-y]"
+            exit 1
+            ;;
+    esac
+done
+
+# If -y is used, automatically set INSTALL_OH_MY_ZSH to "y"
+if [[ "$INSTALL_OH_MY_ZSH" == "y" ]]; then
+    echo "Automatically installing Oh My Zsh..."
+else
+    # Prompt for Oh My Zsh installation
+    read -p "Would you like to install Oh My Zsh? [Y or N]: " INSTALL_OH_MY_ZSH
+fi
 
 if [[ "$INSTALL_OH_MY_ZSH" =~ ^[Yy]$ ]]; then
     # Install Oh My Zsh

@@ -9,17 +9,45 @@ else
     exit 1
 fi
 
-# Add npm global package configuration to .zshrc if not already present
-if ! grep -q 'NPM_PACKAGES="${HOME}/.npm-packages"' ~/.zshrc; then
-   echo '' >> ~/.zshrc
-   echo '# NPM settings' >> ~/.zshrc
-   echo 'NPM_PACKAGES="${HOME}/.npm-packages"' >> ~/.zshrc
-   echo 'export PATH="$PATH:$NPM_PACKAGES/bin"' >> ~/.zshrc
-   echo 'export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"' >> ~/.zshrc
-   echo "Added npm global package configuration to .zshrc."
-else
-   echo "npm global package configuration is already present in .zshrc."
-fi
+# Determine the current shell
+current_shell=$(basename "$SHELL")
+
+# Define the line to add to the configuration file
+line_to_add='NPM_PACKAGES="${HOME}/.npm-packages"'
+
+# Add the line to the appropriate configuration file
+case "$current_shell" in
+    bash)
+        if ! grep -qF "$line_to_add" ~/.bashrc; then
+            echo '' >> ~/.bashrc
+            echo '# NPM settings' >> ~/.bashrc
+            echo "$line_to_add" >> ~/.bashrc
+            echo 'export PATH="$PATH:$NPM_PACKAGES/bin"' >> ~/.bashrc
+            echo 'export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"' >> ~/.bashrc
+            echo "Added npm global package configuration to .bashrc."
+        else
+            echo "npm global package configuration is already present in .bashrc."
+        fi
+        source ~/.bashrc
+        ;;
+    zsh)
+        if ! grep -qF "$line_to_add" ~/.zshrc; then
+            echo '' >> ~/.zshrc
+            echo '# NPM settings' >> ~/.zshrc
+            echo "$line_to_add" >> ~/.zshrc
+            echo 'export PATH="$PATH:$NPM_PACKAGES/bin"' >> ~/.zshrc
+            echo 'export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"' >> ~/.zshrc
+            echo "Added npm global package configuration to .zshrc."
+        else
+            echo "npm global package configuration is already present in .zshrc."
+        fi
+        source ~/.zshrc
+        ;;
+    *)
+        echo "Unsupported shell: $current_shell"
+        exit 1
+        ;;
+esac
 
 # Check if NVM is installed
 if command -v nvm &> /dev/null; then
@@ -39,7 +67,5 @@ else
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 fi
-
-source ~/.zshrc
 
 echo "JavaScript and Node installation script completed"

@@ -14,7 +14,7 @@ zsh_installed="false"
 tmux_installed="false"
 
 if prompt_install "Would you like to do a full install (lazyvim)?"; then
-   ./scripts/zsh-install.sh
+   ./scripts/zsh-install.sh -y
    ./scripts/tmux-install.sh
    ./scripts/go-install.sh
    ./scripts/py-install.sh
@@ -25,7 +25,7 @@ if prompt_install "Would you like to do a full install (lazyvim)?"; then
    zsh_installed="true"
    tmux_installed="true"
 elif prompt_install "Would you like to do a full install (jordanvim)?"; then
-   ./scripts/zsh-install.sh
+   ./scripts/zsh-install.sh -y
    ./scripts/tmux-install.sh
    ./scripts/go-install.sh
    ./scripts/py-install.sh
