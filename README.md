@@ -16,7 +16,7 @@ To install the necessary packages, simply run the installation script and follow
 
 ### Post-Installation Instructions
 
-- **For Tmux**: After installation, use `<leader> + I` to install Tmux plugins.
+- **For Tmux**: After installation, use `<leader> + I` within tmux to install Tmux plugins.
 - **For Zsh**: Restart your terminal or run `zsh` to activate the new shell after installation.
 
 ## Install Options
