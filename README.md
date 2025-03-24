@@ -1,36 +1,41 @@
 # Linux Setup Tool
 
-The Linux Setup Tool (LST) is designed to allow for simple and efficient setup of Linux Ubuntu environments. This tool has options for some of the most common packages utilized on Linux. 
+The **Linux Setup Tool (LST)** is designed to facilitate the simple and efficient setup of Linux Ubuntu environments. This tool provides options for installing some of the most commonly used packages in the Linux ecosystem.
 
 ## Package Requirements
 
-This package is designed to work within the Ubuntu operating system. It has been tested and verified with Ubuntu 24.04.01 LTS.
+The Linux Setup Tool is specifically designed to work within the Ubuntu operating system. It has been tested and verified with **Ubuntu 24.04.01 LTS**.
 
 ## Automated Installation
 
+To install the necessary packages, simply run the installation script and follow the prompts:
+
 ```sh
-# Run installation script and follow prompts
 ./install.sh
 ```
 
-if installing tmux, use `<leader>+I` to install tmux plugins.
+### Post-Installation Instructions
 
-if installing zsh, restart terminal or run 'zsh' post installation
+- **For Tmux**: After installation, use `<leader> + I` to install Tmux plugins.
+- **For Zsh**: Restart your terminal or run `zsh` to activate the new shell after installation.
 
 ## Install Options
-- Full install of packages with LazyVim
-- Full install of packages with JordanVim
-- Individual packages, prompting install for each
+The Linux Setup Tool offers several installation options:
 
-### Packages
-```
-- Zsh (with or without Oh My Zsh)
-- Tmux with TPM
-- Go
-- JavaScript with Node/NPM/NVM
-- Python
-- Rust with Cargo (and stylua)
-- Neovim (built from source)
-- LazyVim
-- JordanVim
-```
+- **Full installation** of packages with **LazyVim**
+- **Full installation** of packages with **JordanVim**
+- **Individual package installations**, prompting for confirmation before each installation
+
+### Available Packages
+
+The following packages can be installed using the Linux Setup Tool:
+
+- **Zsh** (with or without Oh My Zsh)
+- **Tmux** (with Tmux Plugin Manager)
+- **Go**
+- **JavaScript** (with Node.js, NPM, and NVM)
+- **Python**
+- **Rust** (with Cargo and Stylua)
+- **Neovim** (built from source)
+- **LazyVim**
+- **JordanVim**
