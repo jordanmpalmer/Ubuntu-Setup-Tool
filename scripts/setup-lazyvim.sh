@@ -22,7 +22,10 @@ git clone https://github.com/LazyVim/starter || {
   exit 1
 }
 
-mv starter nvim
+mv starter nvim || {
+   echo "Failed to change starter name to nvim"
+   exit 1
+}
 
 rm -rf ~/.config/nvim/.git
 

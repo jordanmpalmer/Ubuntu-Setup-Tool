@@ -17,9 +17,14 @@ cd ~/.config || {
 }
 
 # Clone the nvim repository
-git clone https://github.com/jordanmpalmer/nvim.git || {
+git clone https://github.com/jordanmpalmer/JordanVim || {
   echo "Failed to clone repository"
   exit 1
+}
+
+mv JordanVim nvim || {
+   echo "Failed to change JordanVim name to nvim"
+   exit 1
 }
 
 cd nvim || {
