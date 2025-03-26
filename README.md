@@ -16,10 +16,11 @@ To install the necessary packages, simply run the installation script and follow
 
 ### Post-Installation Instructions
 
-- **For Tmux**: After installation, use `<leader> + I` within tmux to install Tmux plugins (default `<leader>` is C-space found in `~/.tmux.conf`). 
+- **For Tmux**: After installation, use `<leader> + I` within tmux to install Tmux plugins (default `<leader>` is C-space found in `~/.tmux.conf`).
 - **For Zsh**: Restart your terminal or run `zsh` to activate the new shell after installation.
 
 ## Install Options
+
 The Ubuntu Setup Tool offers several installation options:
 
 - **Full installation** of packages with **[LazyVim](https://github.com/LazyVim/LazyVim)**
@@ -34,7 +35,7 @@ The following packages can be installed using the Ubuntu Setup Tool:
 - **[Tmux](https://github.com/tmux/tmux)** (with Tmux Plugin Manager)
 - **[Go](https://go.dev/)**
 - **[JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)** (with Node.js, NPM, and NVM)
-- **[Python](https://www.python.org/)**
+- **[Python](https://www.python.org/)** (with pip)
 - **[Rust](https://www.rust-lang.org/)** (with Cargo and Stylua)
 - **[Neovim](https://github.com/neovim/neovim)** (built from source)
 - **[LazyVim](https://github.com/LazyVim/LazyVim)**
