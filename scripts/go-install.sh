@@ -30,7 +30,7 @@ current_shell=$(basename "$SHELL")
 line_to_add='export PATH=$PATH:/usr/local/go/bin'
 
 # Add the line to the appropriate configuration file
-if [ -f ~/zshrc ]; then
+if [ -f ~/.zshrc ]; then
         if ! grep -qF "$line_to_add" ~/.zshrc; then
             echo '' >> ~/.zshrc
             echo '# Go Settings' >> ~/.zshrc
