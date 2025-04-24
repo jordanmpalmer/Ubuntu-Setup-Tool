@@ -16,21 +16,7 @@ current_shell=$(basename "$SHELL")
 line_to_add='NPM_PACKAGES="${HOME}/.npm-packages"'
 
 # Add the line to the appropriate configuration file
-case "$current_shell" in
-    bash)
-        if ! grep -qF "$line_to_add" ~/.bashrc; then
-            echo '' >> ~/.bashrc
-            echo '# NPM settings' >> ~/.bashrc
-            echo "$line_to_add" >> ~/.bashrc
-            echo 'export PATH="$PATH:$NPM_PACKAGES/bin"' >> ~/.bashrc
-            echo 'export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"' >> ~/.bashrc
-            echo "Added npm global package configuration to .bashrc."
-        else
-            echo "npm global package configuration is already present in .bashrc."
-        fi
-        source ~/.bashrc
-        ;;
-    zsh)
+if [ -f ~/.zshrc ]; then
         if ! grep -qF "$line_to_add" ~/.zshrc; then
             echo '' >> ~/.zshrc
             echo '# NPM settings' >> ~/.zshrc
@@ -42,12 +28,22 @@ case "$current_shell" in
             echo "npm global package configuration is already present in .zshrc."
         fi
         source ~/.zshrc
-        ;;
-    *)
+elif [ -f ~/.bashrc ]; then
+        if ! grep -qF "$line_to_add" ~/.bashrc; then
+            echo '' >> ~/.bashrc
+            echo '# NPM settings' >> ~/.bashrc
+            echo "$line_to_add" >> ~/.bashrc
+            echo 'export PATH="$PATH:$NPM_PACKAGES/bin"' >> ~/.bashrc
+            echo 'export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"' >> ~/.bashrc
+            echo "Added npm global package configuration to .bashrc."
+        else
+            echo "npm global package configuration is already present in .bashrc."
+        fi
+        source ~/.bashrc
+else
         echo "Unsupported shell: $current_shell"
         exit 1
-        ;;
-esac
+fi
 
 # Check if NVM is installed
 if command -v nvm &> /dev/null; then

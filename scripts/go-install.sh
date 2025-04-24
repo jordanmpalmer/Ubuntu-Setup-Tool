@@ -30,19 +30,7 @@ current_shell=$(basename "$SHELL")
 line_to_add='export PATH=$PATH:/usr/local/go/bin'
 
 # Add the line to the appropriate configuration file
-case "$current_shell" in
-    bash)
-        if ! grep -qF "$line_to_add" ~/.bashrc; then
-            echo '' >> ~/.bashrc
-            echo '# Go Settings' >> ~/.bashrc
-            echo "$line_to_add" >> ~/.bashrc
-            echo "Added Go to PATH in .bashrc."
-        else
-            echo "Go is already in PATH in .bashrc."
-        fi
-        source ~/.bashrc
-        ;;
-    zsh)
+if [ -f ~/zshrc ]; then
         if ! grep -qF "$line_to_add" ~/.zshrc; then
             echo '' >> ~/.zshrc
             echo '# Go Settings' >> ~/.zshrc
@@ -52,11 +40,19 @@ case "$current_shell" in
             echo "Go is already in PATH in .zshrc."
         fi
         source ~/.zshrc
-        ;;
-    *)
+elif [ -f ~/.bashrc ]; then
+	if ! grep -qF "$line_to_add" ~/.bashrc; then
+            echo '' >> ~/.bashrc
+            echo '# Go Settings' >> ~/.bashrc
+            echo "$line_to_add" >> ~/.bashrc
+            echo "Added Go to PATH in .bashrc."
+        else
+            echo "Go is already in PATH in .bashrc."
+        fi
+        source ~/.bashrc
+else
         echo "Unsupported shell: $current_shell"
         exit 1
-        ;;
-esac
+fi
 
 echo "Go installation script completed"

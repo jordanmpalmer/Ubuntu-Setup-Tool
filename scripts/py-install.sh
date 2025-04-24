@@ -10,6 +10,10 @@ fi
 
 mkdir -p ~/.config
 
-source ~/.zshrc
+if [ -f ~/.zshrc ]; then
+	source ~/.zshrc
+elif [ -f ~/.bashrc ]; then
+	source ~/.bashrc
+fi
 
 echo "Python installation script completed"

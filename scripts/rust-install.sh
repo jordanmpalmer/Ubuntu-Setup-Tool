@@ -42,21 +42,7 @@ current_shell=$(basename "$SHELL")
 line_to_add='export PATH="$HOME/.cargo/bin:$PATH"'
 
 # Add the line to the appropriate configuration file
-case "$current_shell" in
-    bash)
-        if ! grep -qF "$line_to_add" ~/.bashrc; then
-            echo '' >> ~/.bashrc
-            echo '# Rust settings' >> ~/.bashrc
-            echo "$line_to_add" >> ~/.bashrc
-            echo '. "$HOME/.cargo/env"' >> ~/.bashrc
-            echo 'source $HOME/.cargo/env' >> ~/.bashrc
-            echo "Added Cargo to PATH in .bashrc."
-        else
-            echo "Cargo is already in PATH in .bashrc."
-        fi
-        source ~/.bashrc
-        ;;
-    zsh)
+if [ -f ~/.zshrc ]; then
         if ! grep -qF "$line_to_add" ~/.zshrc; then
             echo '' >> ~/.zshrc
             echo '# Rust settings' >> ~/.zshrc
@@ -68,11 +54,21 @@ case "$current_shell" in
             echo "Cargo is already in PATH in .zshrc."
         fi
         source ~/.zshrc
-        ;;
-    *)
+elif [ -f ~/.bashrc ]; then
+        if ! grep -qF "$line_to_add" ~/.bashrc; then
+            echo '' >> ~/.bashrc
+            echo '# Rust settings' >> ~/.bashrc
+            echo "$line_to_add" >> ~/.bashrc
+            echo '. "$HOME/.cargo/env"' >> ~/.bashrc
+            echo 'source $HOME/.cargo/env' >> ~/.bashrc
+            echo "Added Cargo to PATH in .bashrc."
+        else
+            echo "Cargo is already in PATH in .bashrc."
+        fi
+        source ~/.bashrc
+else
         echo "Unsupported shell: $current_shell"
         exit 1
-        ;;
-esac
+fi
 
 echo "Rust installation script completed"
