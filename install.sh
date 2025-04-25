@@ -20,6 +20,7 @@ if prompt_install "Would you like to do a full install (lazyvim)?"; then
    ./scripts/py-install.sh
    ./scripts/js-install.sh
    ./scripts/rust-install.sh
+   ./scripts/csharp-install.sh
    ./scripts/nvim-install.sh
    ./scripts/setup-lazyvim.sh
    zsh_installed="true"
@@ -31,6 +32,7 @@ elif prompt_install "Would you like to do a full install (jordanvim)?"; then
    ./scripts/py-install.sh
    ./scripts/js-install.sh
    ./scripts/rust-install.sh
+   ./scripts/csharp-install.sh
    ./scripts/nvim-install.sh
    ./scripts/setup-jordanvim.sh
    zsh_installed="true"
@@ -66,6 +68,11 @@ else
    # Prompt for Rust installation
    if prompt_install "Would you like to install Rust?"; then
       ./scripts/rust-install.sh
+   fi
+
+   # Prompt for C# installation
+   if prompt_install "Would you like to install C#?"; then
+      ./scripts/csharp-install.sh
    fi
 
    # Prompt for Neovim installation
