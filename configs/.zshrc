@@ -48,4 +48,22 @@ alias ll='ls -FlAh'
 alias llt='ls -FlAh --tree'
 alias lt='ls --tree'
 
+alias lvim='NVIM_APPNAME=lazyvim nvim'
+
 setopt extendedglob # for more advanced pattern matching in bash
+
+# Go Settings
+export PATH=$PATH:/usr/local/go/bin
+
+# NPM settings
+NPM_PACKAGES="${HOME}/.npm-packages"
+export PATH="$PATH:$NPM_PACKAGES/bin"
+export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
+
+# Rust settings
+export PATH="$HOME/.cargo/bin:$PATH"
+. "$HOME/.cargo/env"
+source $HOME/.cargo/env
+
+# kiro-cli
+export PATH="$HOME/.local/bin:$PATH"
